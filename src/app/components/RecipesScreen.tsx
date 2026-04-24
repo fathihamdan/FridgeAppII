@@ -92,7 +92,7 @@ Each recipe object must have exactly these fields:
 }
 Prioritize ingredients that are expiring soon when relevant. Keep ingredients lowercase. Respond ONLY with the JSON array, nothing else.`;
 
-    const response = await fetch('/zai/v1/chat/completions',  {
+    const response = await fetch('https://api.ilmu.ai/v1/chat/completions',  {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer sk-8590c38c5b109737b57a0e9d8ed3ac4bdaf4765e8f47df21',
