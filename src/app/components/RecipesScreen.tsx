@@ -92,12 +92,9 @@ Each recipe object must have exactly these fields:
 }
 Prioritize ingredients that are expiring soon when relevant. Keep ingredients lowercase. Respond ONLY with the JSON array, nothing else.`;
 
-    const response = await fetch('https://api.ilmu.ai/v1/chat/completions',  {
+    const response = await fetch('/api/recipes', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer sk-8590c38c5b109737b57a0e9d8ed3ac4bdaf4765e8f47df21',
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'ilmu-glm-5.1',
         max_tokens: 2000,
@@ -107,6 +104,21 @@ Prioritize ingredients that are expiring soon when relevant. Keep ingredients lo
         ],
       }),
     });
+    // const response = await fetch('https://api.ilmu.ai/v1/chat/completions',  {
+    //   method: 'POST',
+    //   headers: {
+    //     'Authorization': 'Bearer sk-8590c38c5b109737b57a0e9d8ed3ac4bdaf4765e8f47df21',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     model: 'ilmu-glm-5.1',
+    //     max_tokens: 2000,
+    //     messages: [
+    //       { role: 'system', content: systemPrompt },
+    //       { role: 'user', content: userMessage },
+    //     ],
+    //   }),
+    // });
 
     if (!response.ok) {
       const errorText = await response.text();
